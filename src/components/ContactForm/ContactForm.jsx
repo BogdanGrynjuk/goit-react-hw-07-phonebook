@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getContacts } from "redux/selectors";
+import { selectContacts } from "redux/selectors";
 import { addContact } from "redux/operations";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Formik } from 'formik';
@@ -9,7 +9,7 @@ import { Button, Field, Form, Icon, Label } from './ContactForm.styled';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);  
+  const contacts = useSelector(selectContacts);  
 
   const handleSubmit = (value, { resetForm }) => {
     const isDuplicate = contacts.find(contact => contact.name.toLowerCase() === value.name.toLowerCase());
@@ -20,7 +20,8 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact(value));    
+    dispatch(addContact(value));
+    Notify.success(`${value.name} successfully added to contact list`);
     resetForm();
   };  
 
