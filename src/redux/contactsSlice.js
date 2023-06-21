@@ -31,7 +31,7 @@ const contactsSlice = createSlice({
         ...state,
         isLoading: false,
         error: null,
-        items: action.payload,
+        items: action.payload.sort((a, b) => a.name.localeCompare(b.name)),
       };
     },
     [fetchContacts.rejected]: handleRejected,
