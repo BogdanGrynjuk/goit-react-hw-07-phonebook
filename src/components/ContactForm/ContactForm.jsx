@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getContacts } from "redux/selectors";
-import { addContact } from "redux/contactsSlice";
+import { addContact } from "redux/operations";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Formik } from 'formik';
 
