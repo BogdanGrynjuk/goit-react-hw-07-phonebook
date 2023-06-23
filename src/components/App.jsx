@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 
-// import { selectContacts, selectError, selectIsLoading, selectVisibleContacts } from 'redux/selectors';
-import { selectError, selectIsLoading } from 'redux/selectors';
+import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
 
 import Layout from './Layout';
 import PhoneBook from './PhoneBoock';
@@ -13,14 +12,15 @@ import Filter from './Filter';
 import Loader from "./Loader";
 import ContactList from './ContactList';
 import Message from "./Message";
+import ContactsCounter from "./ContactsCounter";
 
 const App = () => {
   const dispatch = useDispatch();  
 
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  // const contacts = useSelector(selectContacts);
-  // const visibleContacts = useSelector(selectVisibleContacts);
+
+  const countContacts = useSelector(selectContacts).length;
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -29,22 +29,24 @@ const App = () => {
   return (
     <Layout>
       <PhoneBook>
-        <ContactForm/>
+        <ContactForm />
         <Contacts>
-          {isLoading  && <Loader />}
+          {isLoading && <Loader />}
           {error && <Message message={error} />}
-          {/* {!isLoading && contacts.length > 1 && <Filter />}
-          {!isLoading && contacts.length > 0 && <ContactList />} 
-          {!isLoading && contacts.length === 0 &&
+          {!isLoading && countContacts > 1 && <Filter />}
+          {!isLoading && countContacts > 0 &&
+            <>
+              <ContactsCounter />
+              <ContactList />
+            </>
+          }
+          {!isLoading && countContacts === 0 &&
             <Message message="There are no contacts in your phone book" />
           }
-          {!isLoading && contacts.length > 0 && visibleContacts.length === 0 && 
-            <Message message="No contacts were found according to your request" />
-          } */}
-          <Filter/>      
-          <ContactList/>
+          {/* <Filter />
+          <ContactList /> */}
         </Contacts>
-      </PhoneBook>      
+      </PhoneBook>
     </Layout>
   );
 };
