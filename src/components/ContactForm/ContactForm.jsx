@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { selectContacts } from "redux/selectors";
