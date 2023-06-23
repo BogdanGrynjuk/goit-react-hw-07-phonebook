@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 
-import { selectContacts, selectError, selectIsLoading, selectVisibleContacts } from 'redux/selectors';
+// import { selectContacts, selectError, selectIsLoading, selectVisibleContacts } from 'redux/selectors';
+import { selectError, selectIsLoading } from 'redux/selectors';
 
 import Layout from './Layout';
 import PhoneBook from './PhoneBoock';
