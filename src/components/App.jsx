@@ -18,8 +18,8 @@ const App = () => {
 
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const contacts = useSelector(selectContacts);
-  const visibleContacts = useSelector(selectVisibleContacts);
+  // const contacts = useSelector(selectContacts);
+  // const visibleContacts = useSelector(selectVisibleContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
