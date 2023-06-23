@@ -13,9 +13,6 @@ import Loader from "./Loader";
 import ContactList from './ContactList';
 import Message from "./Message";
 
-
-
-
 const App = () => {
   const dispatch = useDispatch();  
 
@@ -35,16 +32,16 @@ const App = () => {
         <Contacts>
           {isLoading  && <Loader />}
           {error && <Message message={error} />}
-          {!isLoading && contacts.length > 1 && <Filter />}
+          {/* {!isLoading && contacts.length > 1 && <Filter />}
           {!isLoading && contacts.length > 0 && <ContactList />} 
           {!isLoading && contacts.length === 0 &&
             <Message message="There are no contacts in your phone book" />
           }
           {!isLoading && contacts.length > 0 && visibleContacts.length === 0 && 
             <Message message="No contacts were found according to your request" />
-          }
-          {/* <Filter/>      
-          <ContactList/> */}
+          } */}
+          <Filter/>      
+          <ContactList/>
         </Contacts>
       </PhoneBook>      
     </Layout>
