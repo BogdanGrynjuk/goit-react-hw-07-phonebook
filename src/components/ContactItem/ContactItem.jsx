@@ -3,13 +3,16 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "redux/operations";
 import { Button, Contact, Icon, Text } from "./ContactItem.styled";
 import { updateFilter } from "redux/filterSlice";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { firstLetterCaps } from "utilities";
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
   
   const handleDelete = () => {
     dispatch(deleteContact(id));
-    dispatch(updateFilter(""));    
+    dispatch(updateFilter(""));
+    Notify.info(`${firstLetterCaps(name)} successfully removed from contacts`);
   };
   
   return (
